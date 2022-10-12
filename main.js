@@ -1,3 +1,4 @@
+
 var request = require("request");
 
 async function view() {
@@ -16,8 +17,8 @@ async function view() {
     };
 
         await request(options, function (error, response) {
-            
-            console.log("view: ",response.statusCode);
+            if(error) throw new Error(error)
+            console.log(Date(), " View: ",response.statusCode);
         });
     
     
@@ -40,8 +41,8 @@ async function vote(id){
       
       };
      await request(options, function (error, response) {
-        
-        console.log("Vote: ",response.statusCode);
+        if(error) throw new Error(error)
+        console.log(Date()," Vote: ",response.statusCode);
       });
 }
 
@@ -52,7 +53,7 @@ function sleep(ms) {
 }
 
 async function run(){
-    for(i=0;i<100000;i++){
+    while(1){
         view()
     if((Math.floor(Math.random()*100) % 2 == 0)){
         await sleep(100+Math.floor(Math.random()*100))
