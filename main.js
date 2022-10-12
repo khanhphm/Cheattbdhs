@@ -17,8 +17,8 @@ async function view() {
     };
 
         await request(options, function (error, response) {
-            if(error) throw new Error(error)
-            console.log(Date(), " View: ",response.statusCode);
+            if(error) {console.error(error)}
+            else console.log(Date(), " View: ",response.statusCode);
         });
     
     
@@ -41,8 +41,8 @@ async function vote(id){
       
       };
      await request(options, function (error, response) {
-        if(error) throw new Error(error)
-        console.log(Date()," Vote: ",response.statusCode);
+        if(error) {console.error(error)}
+        else console.log(Date()," Vote: ",response.statusCode);
       });
 }
 
@@ -53,7 +53,8 @@ function sleep(ms) {
 }
 
 async function run(){
-    while(1){
+    for(i=0;i<100000;i++){
+        console.log("Running " + i)
         view()
     if((Math.floor(Math.random()*100) % 2 == 0)){
         await sleep(100+Math.floor(Math.random()*100))
