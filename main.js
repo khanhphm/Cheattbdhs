@@ -34,8 +34,8 @@ async function vote(id){
           'Accept': 'application/json, text/plain, */*'
         },
         body: JSON.stringify({
-          "email": id,
-          "user_id": id,
+          "email": "liampo-"+id+"@gmail.com",
+          "user_id": "liampo-"+id+"@gmail.com",
           "submission_id": "1660557617366-6b80b717-f85a-4bea-8295-cfcd1b49f97a-c1d8dd46-0bb2-4dd7-ab46-a1d67d8f8a0d"
         })
       
