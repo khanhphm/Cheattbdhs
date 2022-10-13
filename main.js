@@ -1,5 +1,8 @@
 
 var request = require("request");
+const express = require('express')
+const app = express()
+const port = 3000
 
 async function view() {
     var options = {
@@ -53,7 +56,7 @@ function sleep(ms) {
 }
 
 async function run(){
-    for(i=0;i<100000;i++){
+    for(i=0;i<50000;i++){
         console.log("Running " + i)
         view()
     if((Math.floor(Math.random()*100) % 2 == 0)){
@@ -64,4 +67,15 @@ async function run(){
     }
 }
 
-run()
+
+
+
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+  run()
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
