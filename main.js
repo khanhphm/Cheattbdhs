@@ -72,7 +72,7 @@ async function run(n){
 
 
 app.get('/', async (req, res) => {
-res.send("running..")
+res.send("running... "+req.query.num)
   console.log(Math.floor(req.query.num))
   await run(Math.floor(req.query.num));
   
