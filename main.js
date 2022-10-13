@@ -55,13 +55,13 @@ function sleep(ms) {
     });
 }
 
-async function run(){
-    for(i=0;i<50000;i++){
+async function run(n){
+    for(i=0;i<n;i++){
         console.log("Running " + i)
-        view()
+        await view()
     if((Math.floor(Math.random()*100) % 2 == 0)){
         await sleep(100+Math.floor(Math.random()*100))
-        vote((new Date().getTime()+Math.floor(Math.random()*100)).toString())
+        await vote((new Date().getTime()+Math.floor(Math.random()*100)).toString())
     }
     await sleep(100+Math.floor(Math.random()*100))
     }
@@ -71,9 +71,10 @@ async function run(){
 
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-  run()
+app.get('/', async (req, res) => {
+  console.log(Math.floor(req.query.num))
+  await run(Math.floor(req.query.num));
+  res.send("done")
 })
 
 app.listen(port, () => {
